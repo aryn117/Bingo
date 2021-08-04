@@ -15,13 +15,25 @@
     <link rel="stylesheet" href="style.css" />
     <title>BINGO</title>
   </head> 
+  <!--  Splash Screen For Room Creation And Joining -------------->
+  <div class="splash_container">
+    <div class="splash--greeting_container">Bingo!</div>
+    <input class="name--input" type="numbers" placeholder="Name">
+    <div class="create--room_container">
+      <button class="btn create--room_button">CREATE ROOM</button>
+    </div>
+    <div class="join--room_container">
+      <input class="join--room_input" type="numbers" placeholder="Room-ID">
+      <button class="btn join--room_button">JOIN</button>
+    </div>
+  </div>
   <!-- Modal Windows displayed on Winning --------------------->
   <body>
     <div class = 'modal-container modal'>
       <div class="modal--win"><span class='winnerName'>John</span> Won🥳🥳</div>
 
       <div class="modal--content"></div>
-      <button class="btn random--create modal--button">NEW GAME</button>
+     <div class="room--id_container">ROOM-ID</div>
     </div> 
 
     <!-- Navbar on wining ------------------------------------->

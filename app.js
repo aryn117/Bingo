@@ -186,11 +186,10 @@ class Bingo {
     modalWindow.style.display = 'flex';
   }
 
-  _displayMessage(inp) {
-    console.log('called');
+  _displayMessage(input , interval = 2000) {
     messageWindow.style.display = 'flex';
-    messageWindow.textContent = inp;
-    setInterval(() => (messageWindow.style.display = 'none'), 3000);
+    messageWindow.textContent = input;
+    setInterval(() => (messageWindow.style.display = 'none'), interval);
   }
 }
 
