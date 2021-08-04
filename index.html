@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.socket.io/socket.io-3.0.0.js"></script>
+    <script defer src="app.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>BINGO</title>
+  </head> 
+  <!-- Modal Windows displayed on Winning --------------------->
+  <body>
+    <div class = 'modal-container modal'>
+      <div class="modal--win"><span class='winnerName'>John</span> Won🥳🥳</div>
+
+      <div class="modal--content"></div>
+      <button class="btn random--create modal--button">NEW GAME</button>
+    </div> 
+
+    <!-- Navbar on wining ------------------------------------->
+    <div class="navbar">
+      <span class="playerName">Ar</span>
+      <button class="btn random--create">NEW GAME</button>
+    </div>
+    <div class="container">
+      <div class="cell cell-1 active" data-cell_number="1">1</div>
+      <div class="cell cell-2 active" data-cell_number="2">1</div>
+      <div class="cell cell-3 active" data-cell_number="3">1</div>
+      <div class="cell cell-4 active" data-cell_number="4">1</div>
+      <div class="cell cell-5 active" data-cell_number="5">1</div>
+
+      <div class="cell cell-6 active" data-cell_number="6">1</div>
+      <div class="cell cell-7 active" data-cell_number="7">1</div>
+      <div class="cell cell-8 active" data-cell_number="8">1</div>
+      <div class="cell cell-9 active" data-cell_number="9">1</div>
+      <div class="cell cell-10 active" data-cell_number="10">1</div>
+
+      <div class="cell cell-11 active" data-cell_number="11">1</div>
+      <div class="cell cell-12 active" data-cell_number="12">1</div>
+      <div class="cell cell-13 active" data-cell_number="13">1</div>
+      <div class="cell cell-14 active" data-cell_number="14">1</div>
+      <div class="cell cell-15 active" data-cell_number="15">1</div>
+
+      <div class="cell cell-16 active" data-cell_number="16">1</div>
+      <div class="cell cell-17 active" data-cell_number="17">1</div>
+      <div class="cell cell-18 active" data-cell_number="18">1</div>
+      <div class="cell cell-19 active" data-cell_number="19">1</div>
+      <div class="cell cell-20 active" data-cell_number="20">1</div>
+
+      <div class="cell cell-21 active" data-cell_number="21">1</div>
+      <div class="cell cell-22 active" data-cell_number="22">1</div>
+      <div class="cell cell-23 active" data-cell_number="23">1</div>
+      <div class="cell cell-24 active" data-cell_number="24">1</div>
+      <div class="cell cell-25 active" data-cell_number="25">1</div>
+    </div>
+    
+   
+    <div class="display--message">Sample Message</div>
+    
+
+  </body>
+</html>
