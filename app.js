@@ -230,4 +230,4 @@ class Bingo {
   }
 }
 
-const aru = new Bingo('Aryan');
+const aru = new Bingo();
