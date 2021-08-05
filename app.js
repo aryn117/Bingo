@@ -1,16 +1,20 @@
-'use strict';
+'use strict'; // Use Strict Mode
 
-const container = document.querySelector('.container');
-// Start Screen
+//? Selections ////////////////////////////////////////////
+
+//Splash Screen
 const splashContainer = document.querySelector('.splash_container');
 const nameInput = document.querySelector('.name--input');
 const createRoomButton = document.querySelector('.create--room_button');
 const joinRoomInput = document.querySelector('.join--room_input');
 const joinRoomButton = document.querySelector('.join--room_button');
-
+//Navbar
 const playerNameNav = document.querySelector('.player--name_nav');
 const roomIdNav = document.querySelector('.room--id_nav');
+// Main Container
+const container = document.querySelector('.container');
 
+// On winning Modal
 const modalWindow = document.querySelector('.modal');
 const modalWinner = document.querySelector('.modal--winner');
 const messageWindow = document.querySelector('.display--message');

@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
 :root {
+  /*? Color Plaette ******************************************************/
   --raisin-black: #212738ff;
   --bittersweet: #f97068ff;
   --maximum-green-yellow: rgb(223, 255, 0);
@@ -14,12 +15,10 @@ body {
   flex-direction: column;
 }
 
-/*******  ROOM CREATION WINDOW *********************/
+/*? ****** Room Creation Modal *********************************************/
 
 .splash_container {
-  /* ! SPLASH SCREEN DISPLAY  */
   display: flex;
-  /* ! ***********************/
 
   flex-direction: column;
   position: fixed;
@@ -76,6 +75,8 @@ body {
   font-size: 1.2rem;
 }
 
+/*? Winning Modal Screen **************************************/
+
 .modal {
   display: none;
   flex-direction: column;
@@ -113,6 +114,8 @@ div .modal--button {
   margin: 3rem 6rem;
 }
 
+/*? Navbar with Name And RoomID *********************************/
+
 .navbar {
   width: 410px;
   background-color: var(--maximum-green-yellow);
@@ -123,7 +126,6 @@ div .modal--button {
   justify-content: space-between;
   border-radius: 7px;
   margin: 0 2px;
-  opacity: 70%;
   box-shadow: 3px 3px 2px 2px var(--vivid-sky-blue);
 }
 .playerName {
@@ -131,17 +133,41 @@ div .modal--button {
   align-self: center;
 }
 
+/*? Main Bingo Grid Container*************************************** */
+.container {
+  padding: 10px;
+  box-shadow: 3px 3px 2px 2px var(--vivid-sky-blue);
+  width: 430px;
+  height: 430px;
+  margin: 1rem 2px;
+  background-color: var(--maximum-green-yellow);
+  border: 2px white solid;
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas: '.cell-1 .cell-2 .cell-3 .cell-4 .cell-5',
+    '.cell-6 .cell-7 .cell- .cell-9 .cell-10',
+    '.cell-11 .cell-12 .cell-13 .cell-14 .cell-15',
+    '.cell-16 .cell-17 .cell-18 .cell-19 .cell-20',
+    '.cell-21 .cell-22 .cell-23 .cell-24 .cell-25';
+}
+
+/*?  Cells ********************************************************/
 .cell {
   opacity: 100%;
   font-size: 35px;
   background-color: var(--cultured);
   box-shadow: 1px 1px 1px 1px var(--bittersweet);
-  padding: 5px;
-  border: 2px var(--cultured) solid;
-  border-radius: 5px;
+  padding: px;
+  border: 3px var(--cultured) solid;
+  border-radius: 50%;
   margin: 10px;
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
 }
 .cell:hover {
   transform: scale(1.05);
@@ -156,9 +182,45 @@ div .modal--button {
 .active {
   background-color: var(--vivid-sky-blue);
 }
-/* Button */
 
-.btn {
+/*?   Current Player List *****************************************/
+/* div.current--players_container
+    ul.current--player_list
+    li.current--player_listItem
+*/
+
+.current--players_container {
+  display: flex;
+  width: 445px;
+  padding: 2px;
+  box-shadow: 3px 3px 2px 2px var(--vivid-sky-blue);
+  margin: 1rem 2px;
+  background-color: var(--maximum-green-yellow);
+  border: 2px white solid;
+  border-radius: 5px;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+div.current--players_listItem {
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 7px;
+  display: block;
+  margin: 5px 0 5px 1rem;
+  background-color: var(--vivid-sky-blue);
+  border-radius: 5px;
+  border: 2px solid var(--bittersweet);
+}
+
+/*? *** For Unstructured/Reused Elements *************************** */
+/*! **************************************************************** */
+/*! **************************************************************** */
+/*? **************************************************************** */
+
+/*? For all the buttons ****************************/
+
+button.btn {
   font-weight: 500;
   border: solid 2px black;
   outline: 0;
@@ -199,47 +261,8 @@ div .modal--button {
   background-color: var(--vivid-sky-blue);
   box-shadow: none;
 }
-/* ****************************************** */
-.container {
-  opacity: 70%;
-  padding: 20px;
-  box-shadow: 3px 3px 2px 2px var(--vivid-sky-blue);
-  width: 410px;
-  margin: 1rem 2px;
-  background-color: var(--maximum-green-yellow);
-  border: 2px white solid;
-  border-radius: 5px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-  gap: 0px 0px;
-  grid-auto-flow: row;
-  grid-template-areas: '.cell-1 .cell-2 .cell-3 .cell-4 .cell-5',
-    '.cell-6 .cell-7 .cell- .cell-9 .cell-10',
-    '.cell-11 .cell-12 .cell-13 .cell-14 .cell-15',
-    '.cell-16 .cell-17 .cell-18 .cell-19 .cell-20',
-    '.cell-21 .cell-22 .cell-23 .cell-24 .cell-25';
-}
 
-.room--info_container {
-  width: 410px;
-  background-color: #edf6e5;
-  font-size: 2rem;
-  display: flex;
-  justify-content: space-between;
-  border-radius: 7px;
-  margin: 0 2px;
-  opacity: 70%;
-  box-shadow: 3px 3px 2px 2px var(--vivid-sky-blue);
-  padding: 0 1.4rem;
-}
-.input_field_container {
-  display: block;
-  align-self: center;
-}
-
-
-
+/*?  for  _displayMessage Function ********************************/
 div.display--message {
   display: none;
   z-index: 100;
@@ -252,6 +275,5 @@ div.display--message {
   padding: 5px 22px;
   justify-content: space-between;
   border-radius: 5px;
-  /* margin: 1rem 2px; */
   box-shadow: 3px 3px 2px 2px var(--vivid-sky-blue);
 }

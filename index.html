@@ -13,33 +13,35 @@
     />
     <link rel="stylesheet" href="style.css" />
     <title>BINGO</title>
-  </head> 
+  </head>
   <!--  Splash Screen For Room Creation And Joining -------------->
   <div class="splash_container">
     <div class="splash--greeting_container">Bingo!</div>
-    <input class="name--input" type="numbers" placeholder="Name">
+    <input class="name--input" type="numbers" placeholder="Name" />
     <div class="create--room_container">
       <button class="btn create--room_button">CREATE ROOM</button>
     </div>
     <div class="join--room_container">
-      <input class="join--room_input" type="number" placeholder="Room-ID">
+      <input class="join--room_input" type="number" placeholder="Room-ID" />
       <button class="btn join--room_button">JOIN</button>
     </div>
   </div>
   <!-- Modal Windows displayed on Winning --------------------->
   <body>
-    <div class = 'modal-container modal'>
-      <div class="modal--win"><span class='winnerName'>John</span> Won🥳🥳</div>
+    <div class="modal-container modal">
+      <div class="modal--win"><span class="winnerName">John</span> Won🥳🥳</div>
 
       <div class="modal--content"></div>
-     <div class="room--id_container">ROOM-ID</div>
-    </div> 
+      <div class="room--id_container">ROOM-ID</div>
+    </div>
 
     <!-- Navbar on wining ------------------------------------->
     <div class="navbar">
-      <span class="player--name_nav">Ar</span>
-      <span class="room--id_nav">1234</span>
+      <span class="player--name_nav"></span>
+      <span class="room--id_nav"></span>
     </div>
+
+    <!-- Main Game Grid Structure -->
     <div class="container">
       <div class="cell cell-1 active" data-cell_number="1">1</div>
       <div class="cell cell-2 active" data-cell_number="2">1</div>
@@ -71,10 +73,16 @@
       <div class="cell cell-24 active" data-cell_number="24">1</div>
       <div class="cell cell-25 active" data-cell_number="25">1</div>
     </div>
-    
-   
-    <div class="display--message">Sample Message</div>
-    
 
+    <div class="current--players_container">
+      <div class="current--players_listItem">player-1</div>
+      <div class="current--players_listItem">player-2</div>
+      <div class="current--players_listItem">player-3</div>
+      <div class="current--players_listItem">player-4</div>      
+ </div>
+
+    <!-- _displayMessage Container  used for handling invalid 
+    inputs and errors -->
+    <div class="display--message"></div>
   </body>
 </html>
