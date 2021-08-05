@@ -20,10 +20,11 @@ const modalWinner = document.querySelector('.modal--winner');
 const messageWindow = document.querySelector('.display--message');
 
 class Bingo {
-  #playerName = 'default';
-  #MainArray = [];
-  #playerSelectionArray = [];
-  #roomId;
+
+  playerName = 'default';
+  MainArray = [];
+  playerSelectionArray = [];
+  roomId;
 
   //? ////////////////////////////////////////////////////
 
@@ -53,20 +54,20 @@ class Bingo {
     }
     // Condition for creating a Room
     if (e.target.classList.contains('create--room_button')) {
-      playerNameNav.textContent = this.#playerName = nameInput.value;
-      roomIdNav.textContent = this.#roomId = Math.trunc(
+      playerNameNav.textContent = this.playerName = nameInput.value;
+      roomIdNav.textContent = this.roomId = Math.trunc(
         Math.random() * 1000000 + 1
       );
       splashContainer.style.display = 'none';
       return;
     }
-    playerNameNav.textContent = this.#playerName = nameInput.value;
+    playerNameNav.textContent = this.playerName = nameInput.value;
     // condition for valid room input
     if (joinRoomInput.value === '') {
       this._displayMessage('Enter A Valid RoomID', 3000);
       return;
     }
-    roomIdNav.textContent = this.#roomId = joinRoomInput.value;
+    roomIdNav.textContent = this.roomId = joinRoomInput.value;
     splashContainer.style.display = 'none';
   }
   //? ////////////////////////////////////////////////////
@@ -80,14 +81,14 @@ class Bingo {
     ];
 
     // resets #mainArray
-    this.#MainArray = [];
+    this.MainArray = [];
 
     // Loop for filling out the bingo with random numbers and placement
     let temp = [];
     for (let i = 0; i < 25; i++) {
       let index = Math.trunc(Math.random() * array_1to25.length);
       document.querySelector(`.cell-${i + 1}`).textContent = array_1to25[index];
-      this.#MainArray.push(
+      this.MainArray.push(
         Number(document.querySelector(`.cell-${i + 1}`).textContent)
       );
 
@@ -104,7 +105,7 @@ class Bingo {
       e.target.classList.contains('cell') &&
       e.target.classList.contains('active')
     ) {
-      this.#playerSelectionArray.push(Number(e.target.textContent));
+      this.playerSelectionArray.push(Number(e.target.textContent));
       e.target.classList.remove('active');
       return true;
     } else {
@@ -128,8 +129,8 @@ class Bingo {
     //? Index_selectionArray ---> index of all the numbers the players has selected
     //?                            according to mainArray.
 
-    const mainArray = this.#MainArray;
-    const selectionArray = this.#playerSelectionArray;
+    const mainArray = this.MainArray;
+    const selectionArray = this.playerSelectionArray;
 
     // Helper Function that accepts an array and arbitrary number
     // of arguments and validates if all the arguments are included in
