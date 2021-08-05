@@ -1,4 +1,5 @@
 const firebase = require('firebase');
+import app from './app';
 // Required for side-effects
 require('firebase/firestore');
 
@@ -36,3 +37,5 @@ db.collection('bingo')
   .catch(err => {
     console.error('error getting document', err);
   });
+
+  

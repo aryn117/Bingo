@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap");
 :root {
   /*? Color Plaette ******************************************************/
   --raisin-black: #212738ff;
@@ -9,7 +9,7 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   display: flex;
   background-color: var(--raisin-black);
   flex-direction: column;
@@ -33,7 +33,7 @@ body {
 }
 .splash--greeting_container {
   width: 300px;
-  font-family: 'Alfa Slab One', cursive;
+  font-family: "Alfa Slab One", cursive;
   font-size: 75px;
   color: white;
   display: block;
@@ -93,7 +93,7 @@ body {
 }
 .modal--win {
   width: 400px;
-  font-family: 'Alfa Slab One', cursive;
+  font-family: "Alfa Slab One", cursive;
   font-size: 75px;
   color: white;
   display: block;
@@ -148,11 +148,11 @@ div .modal--button {
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   gap: 0px 0px;
   grid-auto-flow: row;
-  grid-template-areas: '.cell-1 .cell-2 .cell-3 .cell-4 .cell-5',
-    '.cell-6 .cell-7 .cell- .cell-9 .cell-10',
-    '.cell-11 .cell-12 .cell-13 .cell-14 .cell-15',
-    '.cell-16 .cell-17 .cell-18 .cell-19 .cell-20',
-    '.cell-21 .cell-22 .cell-23 .cell-24 .cell-25';
+  grid-template-areas: ".cell-1 .cell-2 .cell-3 .cell-4 .cell-5",
+    ".cell-6 .cell-7 .cell- .cell-9 .cell-10",
+    ".cell-11 .cell-12 .cell-13 .cell-14 .cell-15",
+    ".cell-16 .cell-17 .cell-18 .cell-19 .cell-20",
+    ".cell-21 .cell-22 .cell-23 .cell-24 .cell-25";
 }
 
 /*?  Cells ********************************************************/
@@ -234,7 +234,7 @@ button.btn {
   margin: 1rem 1rem;
 }
 .btn::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
