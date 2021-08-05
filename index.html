@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.socket.io/socket.io-3.0.0.js"></script>
     <script defer src="app.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,7 +22,7 @@
       <button class="btn create--room_button">CREATE ROOM</button>
     </div>
     <div class="join--room_container">
-      <input class="join--room_input" type="numbers" placeholder="Room-ID">
+      <input class="join--room_input" type="number" placeholder="Room-ID">
       <button class="btn join--room_button">JOIN</button>
     </div>
   </div>
@@ -38,8 +37,8 @@
 
     <!-- Navbar on wining ------------------------------------->
     <div class="navbar">
-      <span class="playerName">Ar</span>
-      <button class="btn random--create">NEW GAME</button>
+      <span class="player--name_nav">Ar</span>
+      <span class="room--id_nav">1234</span>
     </div>
     <div class="container">
       <div class="cell cell-1 active" data-cell_number="1">1</div>

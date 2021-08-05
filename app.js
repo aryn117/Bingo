@@ -1,94 +1,129 @@
 'use strict';
 
-
 const container = document.querySelector('.container');
+// Start Screen
+const splashContainer = document.querySelector('.splash_container');
+const nameInput = document.querySelector('.name--input');
+const createRoomButton = document.querySelector('.create--room_button');
+const joinRoomInput = document.querySelector('.join--room_input');
+const joinRoomButton = document.querySelector('.join--room_button');
 
-const roomID = document.querySelector('.room--input_field');
-const roomButton = document.querySelector('.room--input_button');
-const playerName = document.querySelector('.playerName');
-const newGame = document.querySelector('.random--create');
+const playerNameNav = document.querySelector('.player--name_nav');
+const roomIdNav = document.querySelector('.room--id_nav');
 
 const modalWindow = document.querySelector('.modal');
 const modalWinner = document.querySelector('.modal--winner');
 const messageWindow = document.querySelector('.display--message');
 
-
 class Bingo {
+  #playerName = 'default';
   #MainArray = [];
   #playerSelectionArray = [];
+  #roomId;
 
   //? ////////////////////////////////////////////////////
 
-  constructor(playerName) {
-    //server
-
-    this.playerName = playerName;
-
-    //reload game on clicking NEW GAME button
-    newGame.addEventListener('click', () => window.location.reload());
-    this._play();
-
-  }
-  //? ////////////////////////////////////////////////////
-
-  _play() {
-    // Set Player Name
-    playerName.textContent = this.playerName;
-
-    //Fill bingo
+  constructor() {
     this._fill();
-
-    this._displayMessage('Hello');
+    // Splash Screen Input EventListener
+    splashContainer.addEventListener(
+      'click',
+      this._getSplashScreenInput.bind(this)
+    );
 
     // Validate User Selection
     container.addEventListener('click', this._validateUserSelection.bind(this));
   }
-
+  //? ////////////////////////////////////////////////////
+  _getSplashScreenInput(e) {
+    // for Event listener to buttons Only
+    if (
+      !e.target.classList.contains('create--room_button') &&
+      !e.target.classList.contains('join--room_button')
+    )
+      return;
+    // condition for valid name input
+    if (nameInput.value === '') {
+      this._displayMessage('Enter a valid Name', 3000);
+      return;
+    }
+    // Condition for creating a Room
+    if (e.target.classList.contains('create--room_button')) {
+      playerNameNav.textContent = this.#playerName = nameInput.value;
+      roomIdNav.textContent = this.#roomId = Math.trunc(
+        Math.random() * 1000000 + 1
+      );
+      splashContainer.style.display = 'none';
+      return;
+    }
+    playerNameNav.textContent = this.#playerName = nameInput.value;
+    // condition for valid room input
+    if (joinRoomInput.value === '') {
+      this._displayMessage('Enter A Valid RoomID', 3000);
+      return;
+    }
+    roomIdNav.textContent = this.#roomId = joinRoomInput.value;
+    splashContainer.style.display = 'none';
+  }
   //? ////////////////////////////////////////////////////
 
+  // this generates the random pattern for the numbers, .push() to #mainArray
+
   _fill() {
-    let bingoArray = [
+    let array_1to25 = [
       1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
       22, 23, 24, 25,
     ];
 
-    this.#MainArray = []; // Clears the player array of any previous entries
+    // resets #mainArray
+    this.#MainArray = [];
 
     // Loop for filling out the bingo with random numbers and placement
     let temp = [];
     for (let i = 0; i < 25; i++) {
-      let index = Math.trunc(Math.random() * bingoArray.length);
-      document.querySelector(`.cell-${i + 1}`).textContent = bingoArray[index];
+      let index = Math.trunc(Math.random() * array_1to25.length);
+      document.querySelector(`.cell-${i + 1}`).textContent = array_1to25[index];
       this.#MainArray.push(
         Number(document.querySelector(`.cell-${i + 1}`).textContent)
       );
 
-      bingoArray.splice(index, 1);
+      array_1to25.splice(index, 1);
     }
   }
 
   //? ////////////////////////////////////////////////////
 
+  // This method returns true/ false IF the user has made a valid choice.
+  // IF a valid selection is made...the selection is .push() into playerSelectionArray
   _validateUserSelection(e) {
-    let validSelectionMade = false;
-    while (!validSelectionMade) {
-      if (
-        !e.target.classList.contains('cell') &&
-        !e.target.classList.contains('active')
-      )
-        return;
+    if (
+      e.target.classList.contains('cell') &&
+      e.target.classList.contains('active')
+    ) {
       this.#playerSelectionArray.push(Number(e.target.textContent));
       e.target.classList.remove('active');
-      validSelectionMade = true;
+      return true;
+    } else {
+      this._displayMessage('Please make A Valid Selection', 3000);
+      return false;
     }
-
-    // After (if) the user selection is validated,_hasUserWon() checks if the user has won the game
-    this._hasUserWon();
   }
 
-  //? ////////////////////////////////////////////////////
-
   _hasUserWon() {
+    //? this function updates the playerSelectionArray with the number
+    //? user has chosen, it also checks if the user has won
+
+    //* this function's  return values are like this:---
+
+    //? IF the player has completed 5 or more lines then the return value is:-
+    //* [true, mainArray, selectionArray,Index_selectionArray]
+
+    //? true ----> player has completed 5 or more lines and has won
+    //? mainArray ---> the array of numbers provided to the player
+    //? selectionArray ---> the numbers the player has selected
+    //? Index_selectionArray ---> index of all the numbers the players has selected
+    //?                            according to mainArray.
+
     const mainArray = this.#MainArray;
     const selectionArray = this.#playerSelectionArray;
 
@@ -120,72 +155,70 @@ class Bingo {
 
     //! TESTS ///////////////////////////////////////////////////////////
 
-    // Horizontal Test
-    if (arrIncHelper(iOfPSA(mainArray, selectionArray), 1, 2, 3, 4, 5)) {
+    // Horizontal Lines Test
+    if (arrIncHelper(iOfPSA(mainArray, selectionArray), 1, 2, 3, 4, 5))
       linesCompleted++;
-      console.log('[1,2,3,4,5] is passed');
-    }
-    if (arrIncHelper(iOfPSA(mainArray, selectionArray), 6, 7, 8, 9, 10)) {
+    if (arrIncHelper(iOfPSA(mainArray, selectionArray), 6, 7, 8, 9, 10))
       linesCompleted++;
-      console.log('[6,7,8,9,10] is passed');
-    }
-    if (arrIncHelper(iOfPSA(mainArray, selectionArray), 11, 12, 13, 14, 15)) {
-      linesCompleted++;
-      console.log('[11,12,13,14,15] is passed');
-    }
-    if (arrIncHelper(iOfPSA(mainArray, selectionArray), 16, 17, 18, 19, 20)) {
-      linesCompleted++;
-      console.log('[16,17,18,19,20] is passed');
-    }
-    if (arrIncHelper(iOfPSA(mainArray, selectionArray), 21, 22, 23, 24, 25)) {
-      {
-        linesCompleted++;
-        console.log('[20,21,22,23,24,25] is passed');
-      }
-    }
-    //Vertical Test
-    if (arrIncHelper(iOfPSA(mainArray, selectionArray), 1, 6, 11, 16, 21)) {
-      linesCompleted++;
-      console.log('[1,6,11,16,21] is passed');
-    }
-    if (arrIncHelper(iOfPSA(mainArray, selectionArray), 2, 7, 12, 17, 22)) {
-      linesCompleted++;
-      console.log('[6,7,12,17,22] is passed');
-    }
-    if (arrIncHelper(iOfPSA(mainArray, selectionArray), 3, 8, 13, 18, 23)) {
-      linesCompleted++;
-      console.log('[11,8,13,18,23] is passed');
-    }
-    if (arrIncHelper(iOfPSA(mainArray, selectionArray), 4, 9, 14, 19, 24)) {
-      linesCompleted++;
-      console.log('[4,9,14,19,24] is passed');
-    }
-    if (arrIncHelper(iOfPSA(mainArray, selectionArray), 5, 10, 15, 20, 25)) {
-      linesCompleted++;
-      console.log('[5,10,15,20,25] is passed');
-    }
 
-    // Diagonal Test
+    if (arrIncHelper(iOfPSA(mainArray, selectionArray), 11, 12, 13, 14, 15))
+      linesCompleted++;
 
-    if (arrIncHelper(iOfPSA(mainArray, selectionArray), 1, 7, 13, 19, 25)) {
+    if (arrIncHelper(iOfPSA(mainArray, selectionArray), 16, 17, 18, 19, 20))
       linesCompleted++;
-      console.log('[1,7,13,19,25] is passed');
-    }
-    if (arrIncHelper(iOfPSA(mainArray, selectionArray), 5, 9, 13, 17, 21)) {
+
+    if (arrIncHelper(iOfPSA(mainArray, selectionArray), 21, 22, 23, 24, 25))
       linesCompleted++;
-      console.log('[5,9,13,17,21] is passed');
-    }
+
+    // Vertical Lines Test
+    if (arrIncHelper(iOfPSA(mainArray, selectionArray), 1, 6, 11, 16, 21))
+      linesCompleted++;
+
+    if (arrIncHelper(iOfPSA(mainArray, selectionArray), 2, 7, 12, 17, 22))
+      linesCompleted++;
+
+    if (arrIncHelper(iOfPSA(mainArray, selectionArray), 3, 8, 13, 18, 23))
+      linesCompleted++;
+
+    if (arrIncHelper(iOfPSA(mainArray, selectionArray), 4, 9, 14, 19, 24))
+      linesCompleted++;
+
+    if (arrIncHelper(iOfPSA(mainArray, selectionArray), 5, 10, 15, 20, 25))
+      linesCompleted++;
+
+    // Diagonal Lines Test
+
+    if (arrIncHelper(iOfPSA(mainArray, selectionArray), 1, 7, 13, 19, 25))
+      linesCompleted++;
+    if (arrIncHelper(iOfPSA(mainArray, selectionArray), 5, 9, 13, 17, 21))
+      linesCompleted++;
 
     //! //////////////////////////////////////////////////////////////////
-    if (Number(linesCompleted) >= 5) this._onWinning();
+
+    if (Number(linesCompleted) >= 5) {
+      return [
+        true,
+        mainArray,
+        selectionArray,
+        iOfPSA(mainArray, selectionArray),
+      ];
+    } else {
+      return [
+        true,
+        mainArray,
+        selectionArray,
+        iOfPSA(mainArray, selectionArray),
+      ];
+    }
   }
 
-  _onWinning() {
+  _winModalMessage() {
     console.log(modalWindow);
     modalWindow.style.display = 'flex';
   }
 
-  _displayMessage(input , interval = 2000) {
+  _displayMessage(input, interval = 2000) {
+    if (messageWindow.style.display === 'flex') return;
     messageWindow.style.display = 'flex';
     messageWindow.textContent = input;
     setInterval(() => (messageWindow.style.display = 'none'), interval);
