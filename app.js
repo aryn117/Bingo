@@ -12,7 +12,6 @@ const modalWindow = document.querySelector('.modal');
 const modalWinner = document.querySelector('.modal--winner');
 const messageWindow = document.querySelector('.display--message');
 
-// const io = require('socket.io-client');
 
 class Bingo {
   #MainArray = [];
