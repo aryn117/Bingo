@@ -78,7 +78,7 @@ body {
 /*? Winning Modal Screen **************************************/
 
 .modal {
-  display: flex;
+  display: none;
   flex-direction: column;
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
