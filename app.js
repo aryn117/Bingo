@@ -15,6 +15,7 @@ const roomIdNav = document.querySelector('.room--id_nav');
 
 // Main Container
 const container = document.querySelector('.container');
+const audio = document.querySelector('.button--press_audio');
 
 // On winning Modal
 const modalWindow = document.querySelector('.modal');
@@ -275,6 +276,10 @@ function setRoomDocument() {
     winner: '',
   });
 }
+function playAudio() {
+  audio.play();
+  console.log('called');
+}
 function roomDocumentListener() {
   db.collection('Bingo')
     .doc(String(roomId))
@@ -292,18 +297,17 @@ function roomDocumentListener() {
       if (doc.data().currentSelection) {
         if (+doc.data().playerTurn === 1) {
           setActivePlayer(2);
-          console.log('called1');
           playerTurn = 2;
         }
 
         if (+doc.data().playerTurn === 2) {
           setActivePlayer(1);
-          console.log('called2');
           playerTurn = 1;
         }
       }
       pushGlobalArray(+doc.data().currentSelection);
       if (+doc.data().currentSelection)
+      playAudio();
         makeCellSelection(+doc.data().currentSelection);
     });
 }
@@ -311,4 +315,5 @@ function roomDocumentListener() {
 
 splashContainer.addEventListener('click', getSplashScreenInput);
 container.addEventListener('click', validateUserSelection);
+
 fill();
