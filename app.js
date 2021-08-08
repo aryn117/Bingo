@@ -273,7 +273,7 @@ function roomDocumentListener() {
 
       if (+doc.data().winner) {
         if (+doc.data().winner === 1) winModalMessage(doc.data().player_1);
-        if (+doc.data().winner === 2) winModalMessage(doc.data.player_2);
+        if (+doc.data().winner === 2) winModalMessage(doc.data().player_2);
       }
 
       if (doc.data().currentSelection) {
