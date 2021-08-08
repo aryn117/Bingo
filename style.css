@@ -38,7 +38,7 @@ body {
   font-size: 65px;
   color: white;
   display: flex;
-  margin-top: 5rem;
+  margin-top: 2rem;
   background-color: var(--vivid-sky-blue);
   opacity: 90%;
   padding: 2rem;
@@ -262,7 +262,8 @@ button.btn {
 div.display--message {
   display: none;
   z-index: 100;
-  margin: 5rem 0 0 0.8rem;
+  align-items: center;
+  margin: 2px 2px;
   font-weight: 500;
   background-color: var(--bittersweet);
   font-size: 1.2rem;
