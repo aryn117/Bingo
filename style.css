@@ -78,7 +78,7 @@ body {
 /*? Winning Modal Screen **************************************/
 
 .modal {
-  display: none;
+  display: flex;
   flex-direction: column;
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -94,14 +94,14 @@ body {
 .modal--win {
   width: 400px;
   font-family: 'Alfa Slab One', cursive;
-  font-size: 75px;
+  font-size: 45px;
   color: white;
   display: block;
   margin-top: 5rem;
-  margin-left: 3rem;
+  margin-left: 1rem;
   background-color: var(--vivid-sky-blue);
   opacity: 90%;
-  padding: 2rem;
+  padding: 1rem;
   border: 1rem solid var(--maximum-green-yellow);
 }
 span .winnerName {
