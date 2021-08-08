@@ -39,13 +39,12 @@ body {
   background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
 }
 .splash--greeting_container {
-  /* width: 300px; */
+  width: 300px;
   font-family: 'Alfa Slab One', cursive;
-  font-size: 75px;
+  font-size: 65px;
   color: white;
   display: flex;
-   margin-top: 5rem;
-
+  margin-top: 5rem;
   justify-content: center;
   background-color: var(--vivid-sky-blue);
   opacity: 90%;
@@ -146,7 +145,7 @@ div .modal--button {
   padding: 10px;
   box-shadow: 3px 3px 2px 2px var(--vivid-sky-blue);
   width: 90vw;
-  height: 430px;
+  height: 90vw;
   margin: 1rem;
   background-color: var(--maximum-green-yellow);
   border: 2px white solid;
