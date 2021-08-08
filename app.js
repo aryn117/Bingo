@@ -231,7 +231,7 @@ function hasUserWon() {
 
   //! //////////////////////////////////////////////////////////////////
 
-  if (Number(linesCompleted) >= 2) {
+  if (Number(linesCompleted) >= 5) {
     return true;
   } else {
     return false;
