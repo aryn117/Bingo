@@ -94,11 +94,12 @@ body {
   font-size: 45px;
   color: white;
   display: block;
-  margin-top: 5rem;
-  margin-left: 1rem;
+  margin:5rem auto;
+
   background-color: var(--vivid-sky-blue);
-  opacity: 90%;
+  opacity: 80%;
   padding: 1rem;
+  justify-content: space-around;
   border: 1rem solid var(--maximum-green-yellow);
 }
 span .winnerName {
@@ -116,7 +117,7 @@ div .modal--button {
 .navbar {
   background-color: var(--maximum-green-yellow);
   font-size: 2rem;
-  color: black;
+  color:black;
   padding: 5px 22px;
   display: flex;
   justify-content: space-between;

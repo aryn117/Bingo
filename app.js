@@ -147,6 +147,17 @@ function validateUserSelection(e) {
     return false;
   }
 }
+
+function setActivePlayer(player) {
+  document.querySelector('.current--players_listItem_1').style.border = 'none';
+  document.querySelector('.current--players_listItem_2').style.border = 'none';
+  if (player === 1)
+    document.querySelector('.current--players_listItem_1').style.border =
+      '4px solid var(--bittersweet)';
+  if (player === 2)
+    document.querySelector('.current--players_listItem_2').style.border =
+      '4px solid var(--bittersweet)';
+}
 function hasUserWon() {
   //? this function updates the playerSelectionArray with the number
   //? user has chosen, it also checks if the user has won
@@ -268,8 +279,10 @@ function roomDocumentListener() {
   db.collection('Bingo')
     .doc(String(roomId))
     .onSnapshot(doc => {
-      document.querySelector('div.current--players_listItem_1').textContent = doc.data().player_1;
-      document.querySelector('div.current--players_listItem_2').textContent = doc.data().player_2;
+      document.querySelector('div.current--players_listItem_1').textContent =
+        doc.data().player_1;
+      document.querySelector('div.current--players_listItem_2').textContent =
+        doc.data().player_2;
 
       if (+doc.data().winner) {
         if (+doc.data().winner === 1) winModalMessage(doc.data().player_1);
@@ -277,11 +290,15 @@ function roomDocumentListener() {
       }
 
       if (doc.data().currentSelection) {
-        if (doc.data().playerTurn === 1) {
+        if (+doc.data().playerTurn === 1) {
+          setActivePlayer(2);
+          console.log('called1');
           playerTurn = 2;
         }
 
-        if (doc.data().playerTurn === 2) {
+        if (+doc.data().playerTurn === 2) {
+          setActivePlayer(1);
+          console.log('called2');
           playerTurn = 1;
         }
       }
