@@ -282,8 +282,6 @@ function roomDocumentListener() {
           playerTurn = 1;
         }
       }
-
-      console.log('Current data: ', doc.data());
       pushGlobalArray(+doc.data().currentSelection);
       if (+doc.data().currentSelection)
         makeCellSelection(+doc.data().currentSelection);
