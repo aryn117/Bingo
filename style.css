@@ -202,7 +202,9 @@ div .modal--button {
   flex-wrap: wrap;
 }
 
-div.current--players_listItem {
+div.current--players_listItem_1,
+div.current--players_listItem_2
+ {
   font-weight: 600;
   text-transform: uppercase;
   padding: 7px;

@@ -268,6 +268,9 @@ function roomDocumentListener() {
   db.collection('Bingo')
     .doc(String(roomId))
     .onSnapshot(doc => {
+      document.querySelector('div.current--players_listItem_1').textContent = doc.data().player_1;
+      document.querySelector('div.current--players_listItem_2').textContent = doc.data().player_2;
+
       if (+doc.data().winner) {
         if (+doc.data().winner === 1) winModalMessage(doc.data().player_1);
         if (+doc.data().winner === 2) winModalMessage(doc.data.player_2);
