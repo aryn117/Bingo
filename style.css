@@ -33,9 +33,9 @@ body {
   left: 0;
   top: 0;
   background-color: var(--vivid-sky-blue);
-  width: 100%; /* Full width */
+  width: 100vw; /* Full width */
   height: 100%; /* Full height */
-  overflow: auto;
+  overflow:hidden;
   background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
 }
 .splash--greeting_container {
@@ -85,7 +85,7 @@ body {
 /*? Winning Modal Screen **************************************/
 
 .modal {
-  display: none;
+  display: flex;
   flex-direction: column;
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
