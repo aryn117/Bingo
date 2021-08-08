@@ -48,7 +48,7 @@ function getSplashScreenInput(e) {
   }
   // Condition for creating a Room
   if (e.target.classList.contains('create--room_button')) {
-    roomId = Math.trunc((Math.random() + 1) * 100000);
+    roomId = Math.trunc((Math.random() + 1) * 1000);
     setRoomDocument();
     playerNameNav.textContent = playerName = nameInput.value;
     roomIdNav.textContent = roomId;

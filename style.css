@@ -19,8 +19,9 @@ body {
 
 .splash_container {
   display: flex;
-
   flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   position: fixed;
   z-index: 5;
   left: 0;
@@ -28,7 +29,7 @@ body {
   background-color: var(--vivid-sky-blue);
   width: 100vw; /* Full width */
   height: 100%; /* Full height */
-  overflow:hidden;
+  overflow-y:hidden;
   background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
 }
 .splash--greeting_container {
@@ -36,15 +37,8 @@ body {
   font-family: 'Alfa Slab One', cursive;
   font-size: 65px;
   color: white;
-<<<<<<< HEAD
   display: flex;
   margin-top: 5rem;
-  justify-content: center;
-=======
-  display: block;
-  margin-top: 5rem;
-  margin-left: 3rem;
->>>>>>> parent of 30b9e9a (flex fix)
   background-color: var(--vivid-sky-blue);
   opacity: 90%;
   padding: 2rem;
@@ -52,39 +46,36 @@ body {
 }
 .name--input {
   border: 10px solid var(--maximum-green-yellow);
-  display: block;
+  display: flex;
+  width: 18rem;
   padding: 1rem;
-  /* width: 340px; */
-  margin: 1rem 3rem;
+  margin: 1rem 1rem;
   border-radius: 5px;
   background-color: var(--cultured);
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
-.create--room_container {
-  margin: 1rem 6rem;
-}
 .join--room_container {
   align-items: center;
   display: flex;
-  padding: 1rem;
+  padding: 0.7rem
 }
 
 .join--room_input {
   border: 10px solid var(--maximum-green-yellow);
-  display: block;
+  display: flex;
   padding: 1rem;
   /* width: 200px; */
   margin-left: 2rem;
   border-radius: 5px;
   background-color: var(--cultured);
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 /*? Winning Modal Screen **************************************/
 
 .modal {
-  display: flex;
+  display: none;
   flex-direction: column;
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -98,11 +89,7 @@ body {
   background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
 }
 .modal--win {
-<<<<<<< HEAD
-  width: 90vw;
-=======
   width: 400px;
->>>>>>> parent of 30b9e9a (flex fix)
   font-family: 'Alfa Slab One', cursive;
   font-size: 45px;
   color: white;
@@ -127,7 +114,6 @@ div .modal--button {
 /*? Navbar with Name And RoomID *********************************/
 
 .navbar {
-  width: 87vw;
   background-color: var(--maximum-green-yellow);
   font-size: 2rem;
   color: black;
@@ -135,7 +121,7 @@ div .modal--button {
   display: flex;
   justify-content: space-between;
   border-radius: 7px;
-  margin: 0 2px;
+  margin: 0 1rem;
   box-shadow: 3px 3px 2px 2px var(--vivid-sky-blue);
 }
 .playerName {
@@ -146,10 +132,8 @@ div .modal--button {
 /*? Main Bingo Grid Container***************************************/
 .container {
   padding: 10px;
-  box-shadow: 3px 3px 2px 2px var(--vivid-sky-blue);
-  width: 90vw;
-  height: 90vw;
-  margin: 1rem;
+  box-shadow: 3px 3px 2px 2px var(--vivid-sky-blue); 
+  margin: 1rem 1rem;
   background-color: var(--maximum-green-yellow);
   border: 2px white solid;
   border-radius: 5px;
@@ -201,7 +185,6 @@ div .modal--button {
 
 .current--players_container {
   display: flex;
-  width: 93vw;
   padding: 2px;
   box-shadow: 3px 3px 2px 2px var(--vivid-sky-blue);
   margin: 1rem;
@@ -236,8 +219,8 @@ button.btn {
   font-weight: 500;
   border: solid 2px black;
   outline: 0;
-  padding: 1rem 2rem;
-  font-size: 1.5rem;
+  padding: 1rem 1.2rem;
+  font-size: 1rem;
   letter-spacing: 0.08rem;
   background-color: white;
   border-radius: 0.35rem;
@@ -280,7 +263,6 @@ div.display--message {
   z-index: 100;
   margin: 5rem 0 0 0.8rem;
   font-weight: 500;
-  width: 95vw;
   background-color: var(--bittersweet);
   font-size: 1.2rem;
   color: white;
