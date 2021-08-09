@@ -38,7 +38,7 @@ let playerTurn = 1;
 
 async function shareRoomCode() {
     try {
-      await navigator.share({ title: "Example Page", url: "" });
+      await navigator.share({ text: String(roomId) });
       console.log("Data was shared successfully");
     } catch (err) {
       console.error("Share failed:", err.message);
