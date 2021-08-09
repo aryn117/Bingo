@@ -15,7 +15,6 @@ const roomIdNav = document.querySelector('.room--id_nav');
 
 // Main Container
 const container = document.querySelector('.container');
-const audio = document.querySelector('.button--press_audio');
 
 // On winning Modal
 const modalWindow = document.querySelector('.modal');
@@ -44,8 +43,6 @@ async function shareRoomCode() {
       console.error("Share failed:", err.message);
     }
   }
-
-
 
 function getSplashScreenInput(e) {
   // for Event listener to buttons Only
@@ -266,6 +263,7 @@ function hasUserWon() {
 function winModalMessage(playerName) {
   document.querySelector('.winnerName').textContent = playerName;
   modalWindow.style.display = 'flex';
+  document.querySelector('.on--winning_audio').play();
 }
 function displayMessage(input, interval = 2000) {
   if (messageWindow.style.display === 'flex') return;
@@ -290,10 +288,7 @@ function setRoomDocument() {
     winner: '',
   });
 }
-function playAudio() {
-  audio.play();
-  console.log('called');
-}
+
 function roomDocumentListener() {
   db.collection('Bingo')
     .doc(String(roomId))
@@ -321,7 +316,7 @@ function roomDocumentListener() {
       }
       pushGlobalArray(+doc.data().currentSelection);
       if (+doc.data().currentSelection)
-      playAudio();
+      document.querySelector('.button--press_audio').play();
         makeCellSelection(+doc.data().currentSelection);
     });
 }
