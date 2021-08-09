@@ -35,6 +35,18 @@ let globalArray = [];
 let playerTurn = 1;
 
 //? ////////  Methods /////////////////////////////////////////////////
+
+async function shareRoomCode() {
+    try {
+      await navigator.share({ title: "Example Page", url: "" });
+      console.log("Data was shared successfully");
+    } catch (err) {
+      console.error("Share failed:", err.message);
+    }
+  }
+
+
+
 function getSplashScreenInput(e) {
   // for Event listener to buttons Only
   if (
@@ -315,5 +327,6 @@ function roomDocumentListener() {
 
 splashContainer.addEventListener('click', getSplashScreenInput);
 container.addEventListener('click', validateUserSelection);
-
+roomIdNav.addEventListener('click', shareRoomCode);
 fill();
+

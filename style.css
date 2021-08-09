@@ -130,6 +130,10 @@ div .modal--button {
   align-self: center;
 }
 
+.room--id_container:hover{
+  cursor:grab;
+  
+}
 /*? Main Bingo Grid Container***************************************/
 .container {
   padding: 5px;
