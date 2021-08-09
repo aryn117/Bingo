@@ -129,6 +129,9 @@ function validateUserSelection(e) {
   ) {
     // Round Robin
 
+    if (playerTurn == 2 && hasUserWon()) winner = 1;
+    if (playerTurn == 1 && hasUserWon()) winner = 2;
+
     if (isHost) {
       if (playerTurn === 2) {
         displayMessage('Please Wait For Your Turn', 2000);
@@ -143,8 +146,7 @@ function validateUserSelection(e) {
       }
     }
 
-    if (playerTurn == 1 && hasUserWon()) winner = 1;
-    if (playerTurn == 2 && hasUserWon()) winner = 2;
+   
 
     db.collection('Bingo').doc(String(roomId)).update({
       currentSelection: e.target.textContent,
