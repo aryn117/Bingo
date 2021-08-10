@@ -36,13 +36,13 @@ let playerTurn = 1;
 //? ////////  Methods /////////////////////////////////////////////////
 
 async function shareRoomCode() {
-    try {
-      await navigator.share({ text: String(roomId) });
-      console.log("Data was shared successfully");
-    } catch (err) {
-      console.error("Share failed:", err.message);
-    }
+  try {
+    await navigator.share({ text: String(roomId) });
+    console.log('Data was shared successfully');
+  } catch (err) {
+    console.error('Share failed:', err.message);
   }
+}
 
 function getSplashScreenInput(e) {
   // for Event listener to buttons Only
@@ -58,8 +58,8 @@ function getSplashScreenInput(e) {
   }
   // Condition for creating a Room
   if (e.target.classList.contains('create--room_button')) {
-    roomId = Math.trunc((Math.random() + 1) * 1000);
-    setRoomDocument();
+   
+  
     playerNameNav.textContent = playerName = nameInput.value;
     roomIdNav.textContent = roomId;
     isHost = true;
@@ -72,7 +72,7 @@ function getSplashScreenInput(e) {
     );
 
     splashContainer.style.display = 'none';
-    roomDocumentListener();
+   
     return;
   }
   playerNameNav.textContent = playerName = nameInput.value;
@@ -126,9 +126,6 @@ function validateUserSelection(e) {
   ) {
     // Round Robin
 
-    if (playerTurn == 2 && hasUserWon()) winner = 1;
-    if (playerTurn == 1 && hasUserWon()) winner = 2;
-
     if (isHost) {
       if (playerTurn === 2) {
         displayMessage('Please Wait For Your Turn', 2000);
@@ -142,8 +139,6 @@ function validateUserSelection(e) {
         return;
       }
     }
-
-   
 
     db.collection('Bingo').doc(String(roomId)).update({
       currentSelection: e.target.textContent,
@@ -298,10 +293,8 @@ function roomDocumentListener() {
       document.querySelector('div.current--players_listItem_2').textContent =
         doc.data().player_2;
 
-      if (+doc.data().winner) {
-        if (+doc.data().winner === 1) winModalMessage(doc.data().player_1);
-        if (+doc.data().winner === 2) winModalMessage(doc.data().player_2);
-      }
+      console.log(doc.data());
+     
 
       if (doc.data().currentSelection) {
         if (+doc.data().playerTurn === 1) {
@@ -315,15 +308,28 @@ function roomDocumentListener() {
         }
       }
       pushGlobalArray(+doc.data().currentSelection);
+      // WIn Condition
+      if (playerTurn == 1 && hasUserWon()) {
+        winModalMessage(`${doc.data().player_2}`);
+        return;
+        // winner 2
+      }
+      
+      if (playerTurn == 2 && hasUserWon()) {
+        winModalMessage(`${doc.data().player_1}`)
+        return;
+       // winner 1
+      }   
       if (+doc.data().currentSelection)
-      document.querySelector('.button--press_audio').play();
-        makeCellSelection(+doc.data().currentSelection);
+        document.querySelector('.button--press_audio').play();
+      makeCellSelection(+doc.data().currentSelection);
     });
 }
 //? ///////////////////////////////////////////////////////////////////
-
+roomId = Math.trunc((Math.random() + 1) * 1000);
 splashContainer.addEventListener('click', getSplashScreenInput);
 container.addEventListener('click', validateUserSelection);
 roomIdNav.addEventListener('click', shareRoomCode);
+setRoomDocument();
 fill();
-
+roomDocumentListener();
