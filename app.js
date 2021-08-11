@@ -58,8 +58,6 @@ function getSplashScreenInput(e) {
   }
   // Condition for creating a Room
   if (e.target.classList.contains('create--room_button')) {
-   
-  
     playerNameNav.textContent = playerName = nameInput.value;
     roomIdNav.textContent = roomId;
     isHost = true;
@@ -72,7 +70,7 @@ function getSplashScreenInput(e) {
     );
 
     splashContainer.style.display = 'none';
-   
+
     return;
   }
   playerNameNav.textContent = playerName = nameInput.value;
@@ -288,13 +286,29 @@ function roomDocumentListener() {
   db.collection('Bingo')
     .doc(String(roomId))
     .onSnapshot(doc => {
+      //?  Check For Winner  //////////////////////////////////
+      // Check if doc.data().winner exists
+      if (doc.data().winner) {
+        let temp = '';
+        if (doc.data().winner === 1) {
+          temp = doc.data().player_1;
+          winModalMessage(temp);
+          console.log(doc.data().player_1);
+        }
+        if (doc.data().winner === 2) {
+          temp = doc.data().player_2;
+          winModalMessage(temp);
+          console.log(doc.data().player_2);
+        }
+      }
+
+      //?  Check for Player Name ///////////////////////////////
       document.querySelector('div.current--players_listItem_1').textContent =
         doc.data().player_1;
       document.querySelector('div.current--players_listItem_2').textContent =
         doc.data().player_2;
 
-      console.log(doc.data());
-     
+      //? Player Round Robin Logic ///////////////////////////
 
       if (doc.data().currentSelection) {
         if (+doc.data().playerTurn === 1) {
@@ -307,19 +321,32 @@ function roomDocumentListener() {
           playerTurn = 1;
         }
       }
+
+      //? Storing to Local Array ///////////////////////////
+
       pushGlobalArray(+doc.data().currentSelection);
-      // WIn Condition
-      if (playerTurn == 1 && hasUserWon()) {
-        winModalMessage(`${doc.data().player_2}`);
-        return;
-        // winner 2
+
+      //?  Win Conditions        ///////////////////////////
+      if (hasUserWon() && isHost) {
+        db.collection('Bingo').doc(String(roomId)).set(
+          {
+            winner: 1,
+          },
+          { merge: true }
+        );
       }
-      
-      if (playerTurn == 2 && hasUserWon()) {
-        winModalMessage(`${doc.data().player_1}`)
-        return;
-       // winner 1
-      }   
+
+      if (hasUserWon() && !isHost) {
+        db.collection('Bingo').doc(String(roomId)).set(
+          {
+            winner: 2,
+          },
+          { merge: true }
+        );
+      }
+
+      //? Audio Logic    ////////////////////////////////////
+
       if (+doc.data().currentSelection)
         document.querySelector('.button--press_audio').play();
       makeCellSelection(+doc.data().currentSelection);
