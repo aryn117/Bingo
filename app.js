@@ -327,7 +327,7 @@ function roomDocumentListener() {
       pushGlobalArray(+doc.data().currentSelection);
 
       //?  Win Conditions        ///////////////////////////
-      if (hasUserWon() && isHost) {
+      if (hasUserWon() && isHost && playerTurn === 2) {
         db.collection('Bingo').doc(String(roomId)).set(
           {
             winner: 1,
@@ -336,7 +336,7 @@ function roomDocumentListener() {
         );
       }
 
-      if (hasUserWon() && !isHost) {
+      if (hasUserWon() && !isHost && playerTurn === 1) {
         db.collection('Bingo').doc(String(roomId)).set(
           {
             winner: 2,
