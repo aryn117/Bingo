@@ -1,4 +1,5 @@
-# Bingo ######################################
+#####################3 Bingo ################
+
 This is a Dual Player Online Bingo Game built from scratch completly in plain HTML,CSS and JavaScript.
 Most of the game Logic is local while firebase only handles the syncing of choices and the winner variable.
 
@@ -9,8 +10,9 @@ Most of the game Logic is local while firebase only handles the syncing of choic
 2. The Screen has a 5 * 5 matrix of numbers from 1 to 25 filled in random locations.(Different for both players).
 
 3.Players choose numbers alternatively, and whoever first complets the 5 lines(Horizontally,Vertically or Diagonally)
-   wins the game.
-   
+   wins the game.  
    
 ###############################################
+
+You can Play the game at:                                 https://onlinebingo.netlify.app/
 
