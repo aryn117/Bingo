@@ -1,4 +1,6 @@
 ##################### Bingo ################
+ONLY OPTIMIZED FOR MOBILE SCREENS.
+
 
 This is a Dual Player Online Bingo Game built from scratch completly in plain HTML,CSS and JavaScript.
 Most of the game Logic is local while firebase only handles the syncing of choices and the winner variable.
